@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações - Leishmaniose</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: var(--dark);
+            overflow-y: auto;
+        }
+        
+        .info-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 80px;
+        }
+
+        .back-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+            z-index: 100;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .info-card h2 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card p, .info-card li {
+            color: var(--light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+        }
+
+        .info-card li {
+            margin-bottom: 8px;
+        }
+
+        .warning {
+            background: rgba(231, 76, 60, 0.2);
+            border-left-color: var(--danger);
+        }
+
+        .tip {
+            background: rgba(46, 204, 113, 0.2);
+            border-left-color: var(--primary);
+        }
+
+        .mosquito-img {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #D2B48C, #F4A460);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .stat-box {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-box span {
+            display: block;
+            color: var(--gold);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .stat-box small {
+            color: #bdc3c7;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="info-container">
+        
+        <div class="info-card">
+            <h2>🦟 O Que é a Leishmaniose?</h2>
+            <p>A <strong>Leishmaniose</strong> é uma doença causada por parasitas do gênero <em>Leishmania</em>, transmitida principalmente pela picada do <strong>Mosquito Palha</strong> (Flebótomo).</p>
+            <br>
+            <p>Ele é muito pequeno (2 a 4 mm), cor palha/dourada e faz um voo silencioso. Por isso é difícil vê-lo!</p>
+        </div>
+
+        <div class="info-card">
+            <h2>📊 Dados Importantes</h2>
+            <div class="mosquito-img">🦟</div>
+            <div class="stat-grid">
+                <div class="stat-box">
+                    <span>12+</span>
+                    <small>Países afetados</small>
+                </div>
+                <div class="stat-box">
+                    <span>90%</span>
+                    <small>Dos casos em cães</small>
+                </div>
+                <div class="stat-box">
+                    <span>1M</span>
+                    <small>Casos/ano (mundo)</small>
+                </div>
+                <div class="stat-box">
+                    <span>Crepúsculo</span>
+                    <small>Horário de pico</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card warning">
+            <h2>⚠️ Sintomas no Cão</h2>
+            <ul>
+                <li><strong>Queda de pelo</strong> (especialmente ao redor dos olhos e orelhas)</li>
+                <li><strong>Feridas na pele</strong> que não cicatrizam</li>
+                <li><strong>Perda de apetite</strong> e emagrecimento</li>
+                <li><strong>Sangramento</strong> no focinho e patas</li>
+                <li><strong>Crescimento exagerado</strong> das unhas</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h2>🏠 Como Proteger seu Cão</h2>
+            <ul>
+                <li>💉 <strong>Vacinação</strong> anual (disponível em clínicas)</li>
+                <li>🧪 <strong>Testes periódicos</strong> no veterinario</li>
+                <li>>Repelentes🧴 <strong</strong> e coleiras especiais</li>
+                <li>🏡 <strong>Ambiente limpo</strong>: removing folhas e sujeira</li>
+                <li>🌙 <strong>Evitar passeios</strong> ao entardecer/amanhecer</li>
+            </ul>
+        </div>
+
+        <div class="info-card tip">
+            <h2>💡 No Jogo</h2>
+            <p>No jogo, você coletou os <strong>Repelentes</strong> para se proteger. Na vida real, combine a prevenção química (coleiras, sprays) com a ambiental (limpeza) para maior eficácia!</p>
+        </div>
+
+    </div>
+
+    <a href="index.html" class="back-btn">VOLTAR AO JOGO</a>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cão Fiel: Proteja-se do Mosquito Palha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- HUD -->
+        <div id="ui-layer">
+            <div class="top-bar">
+                <button id="pause-btn" class="icon-btn">⏸️</button>
+                <div class="stats">
+                    <span id="scoreDisplay">Pontos: 0</span>
+                    <span id="healthDisplay">❤️❤️❤️</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela Inicial -->
+        <div id="start-screen" class="overlay">
+            <div class="menu-content">
+                <h1>🐕 CÃO FIEL</h1>
+                <p class="subtitle">Leishmaniose: Um jogo de prevenção</p>
+                
+                <div class="instructions">
+                    <p>Arraste para <strong>mover o cão</strong>.</p>
+                    <p>Evite o <strong>Mosquito Palha</strong> 🦟</p>
+                    <p>Colete <strong>Repelentes</strong> 🧴</p>
+                </div>
+
+                <div class="btn-group">
+                    <button onclick="startGame()" class="btn-primary">JOGAR</button>
+                    <button onclick="window.location.href='info.html'" class="btn-secondary">📚 Informações</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu de Pause -->
+        <div id="pause-screen" class="overlay hidden">
+            <div class="menu-content">
+                <h2>⏸️ PAUSE</h2>
+                <div class="btn-group">
+                    <button onclick="resumeGame()" class="btn-primary">CONTINUAR</button>
+                    <button onclick="window.location.href='info.html'" class="btn-secondary">📚 INFO</button>
+                    <button onclick="quitGame()" class="btn-danger">SAIR</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over -->
+        <div id="game-over-screen" class="overlay hidden">
+            <div class="menu-content">
+                <h2>😢 FIM DE JOGO</h2>
+                <p class="score-final">Pontuação: <span id="final-score">0</span></p>
+                <div class="btn-group">
+                    <button onclick="startGame()" class="btn-primary">TENTAR NOVAMENTE</button>
+                    <button onclick="window.location.href='index.html'" class="btn-secondary">MENU</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
