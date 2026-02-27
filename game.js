@@ -17,6 +17,34 @@ let animationId;
 
 const REPEL_RADIUS = 175;
 
+// =====================
+// 🔊 EFEITOS SONOROS
+// =====================
+
+let soundEnabled = true;
+
+const sfxMosquitoHit = new Audio("assets/sounds/mosquito.mp3");
+const sfxBone = new Audio("assets/sounds/bone.mp3");
+const sfxRepel = new Audio("assets/sounds/repel.mp3");
+const sfxGameOver = new Audio("assets/sounds/gameover.mp3");
+const sfxMosquitoDeath = new Audio("assets/sounds/mosquito_death.mp3");
+
+
+// =====================
+// 🎵 MÚSICA DE FUNDO
+// =====================
+
+const bgMusic = new Audio("assets/sounds/music.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.4;
+
+function playSound(sound) {
+    if (!soundEnabled) return;
+
+    sound.currentTime = 0;
+    sound.play();
+}
+
 function distance(x1, y1, x2, y2) {
     return Math.hypot(x2 - x1, y2 - y1);
 }
@@ -453,24 +481,36 @@ function gameLoop(timestamp) {
     player.draw();
 
     // Enemies
-    enemies.forEach((e, i) => {
-        e.update();
-        e.draw();
-        if (e.y > canvas.height) enemies.splice(i, 1);
-    });
+    for (let i = enemies.length - 1; i >= 0; i--) {
+
+        enemies[i].update();
+        enemies[i].draw();
+
+        if (enemies[i].y > player.y + player.height) {
+            enemies.splice(i, 1);
+        }
+    }
 
     // Items
-    items.forEach((i, index) => {
-        i.update();
-        i.draw();
-        if (i.y > canvas.height) items.splice(index, 1);
-    });
+    for (let i = items.length - 1; i >= 0; i--) {
+
+        items[i].update();
+        items[i].draw();
+        if (items[i].y > player.y + player.height) {
+            items.splice(i, 1);
+        }
+    }
+
     // Bones
-    bones.forEach((b, idx) => {
-        b.update();
-        b.draw();
-        if (b.y > canvas.height) bones.splice(idx, 1);
-    });
+    for (let i = bones.length - 1; i >= 0; i--) {
+
+        bones[i].update();
+        bones[i].draw();
+
+        if (bones[i].y > player.y + player.height) {
+            bones.splice(i, 1);
+        }
+    }
 
     // Colisões
     checkCollisions();
@@ -555,6 +595,8 @@ function checkCollisions() {
             m.x, m.y, m.width, m.height
         )) {
             lives--;
+            sfxMosquitoHit.currentTime = 0;
+            sfxMosquitoHit.play();
             enemies.splice(i, 1);
             updateHUD();
             screenShake();
@@ -584,6 +626,9 @@ function checkCollisions() {
             // ✅ ganha +10 ao pegar
             score += 10;
 
+            sfxRepel.currentTime = 0;
+            sfxRepel.play();
+
             createEffect(blastX, blastY, 'collect');
             createEffect(blastX, blastY, 'repelBlast');
 
@@ -601,6 +646,10 @@ function checkCollisions() {
 
                     createEffect(mx, my, 'mosquitoDeath');
                     createEffect(mx, my, 'plusFive');
+
+                    sfxMosquitoDeath.currentTime = 0;
+                    sfxMosquitoDeath.play();
+
 
                     enemies.splice(i, 1);
                 }
@@ -621,6 +670,8 @@ function checkCollisions() {
             bones.splice(i, 1);
             if (lives < 3) {
                 lives++;
+                sfxBone.currentTime = 0;
+                sfxBone.play();
                 updateHUD();
                 createEffect(b.x + b.width / 2, b.y + b.height / 2, 'bone');
             }
@@ -819,6 +870,9 @@ function updateHUD() {
 }
 
 function startGame() {
+    bgMusic.currentTime = 0;
+    bgMusic.play();
+
     startScreen.classList.add('hidden');
     gameOverScreen.classList.add('hidden');
 
@@ -843,6 +897,11 @@ function startGame() {
 }
 
 function gameOver() {
+    bgMusic.pause();
+
+    sfxGameOver.currentTime = 0;
+    sfxGameOver.play();
+
     gameRunning = false;
     cancelAnimationFrame(animationId);
     document.getElementById('final-score').textContent = score;
@@ -862,5 +921,37 @@ window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && gameRunning && !isPaused) {
         isPaused = true;
         pauseScreen.classList.remove('hidden');
+    }
+});
+
+const toggleSoundBtn = document.getElementById("toggleSoundBtn");
+
+toggleSoundBtn.addEventListener("click", () => {
+
+    soundEnabled = !soundEnabled;
+
+    if (!soundEnabled) {
+
+        bgMusic.pause();
+
+        sfxBone.muted = true;
+        sfxRepel.muted = true;
+        sfxMosquitoHit.muted = true;
+        sfxMosquitoDeath.muted = true;
+        sfxGameOver.muted = true;
+
+        toggleSoundBtn.textContent = "🔇 Som: OFF";
+
+    } else {
+
+        bgMusic.play();
+
+        sfxBone.muted = false;
+        sfxRepel.muted = false;
+        sfxMosquitoHit.muted = false;
+        sfxMosquitoDeath.muted = false;
+        sfxGameOver.muted = false;
+
+        toggleSoundBtn.textContent = "🔊 Som: ON";
     }
 });
