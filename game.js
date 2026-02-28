@@ -55,7 +55,9 @@ const preventionTips = [
     'Use repelente regularmente ao sair de casa, principalmente ao anoitecer.',
     'Evite áreas com acúmulo de matéria orgânica e solo úmido.',
     'Proteja seu cão com produtos veterinários adequados.',
-    'Drene a água parada em recipientes ao redor da casa para não criar criadouros.'
+    'Drene a água parada em recipientes ao redor da casa para não criar criadouros.',
+    'Uso de coleiras especiais para tratar Leishmaniose.'
+
 ];
 // bone image
 let boneImage = new Image();
