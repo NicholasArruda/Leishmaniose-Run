@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@
             background: var(--dark);
             overflow-y: auto;
         }
-        
+
         .info-container {
             max-width: 600px;
             margin: 0 auto;
@@ -20,22 +21,26 @@
         }
 
         .back-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), #27ae60);
             color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
             font-weight: bold;
             text-decoration: none;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
-            z-index: 100;
+            transition: all 0.2s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
         }
 
         .info-card {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             padding: 20px;
             margin-bottom: 20px;
@@ -51,7 +56,8 @@
             gap: 10px;
         }
 
-        .info-card p, .info-card li {
+        .info-card p,
+        .info-card li {
             color: var(--light);
             line-height: 1.6;
             font-size: 0.95rem;
@@ -95,7 +101,7 @@
         }
 
         .stat-box {
-            background: rgba(0,0,0,0.3);
+            background: rgba(0, 0, 0, 0.3);
             padding: 15px;
             border-radius: 10px;
             text-align: center;
@@ -112,35 +118,98 @@
             color: #bdc3c7;
             font-size: 0.8rem;
         }
+
+        /* ===== QUIZ OTIMIZADO ===== */
+
+        .quiz-card {
+            min-height: 220px;
+        }
+
+        .quiz-content {
+            margin-top: 10px;
+        }
+
+        #question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+
+        .quiz-answers button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--light);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .quiz-answers button:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+        }
+
+        .quiz-feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            min-height: 24px;
+        }
+
+        .quiz-next {
+            width: 100%;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            background: var(--gold);
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .quiz-next:hover {
+            opacity: 0.9;
+        }
+
+        .quiz-result {
+            margin-top: 15px;
+            font-weight: bold;
+            color: var(--gold);
+        }
     </style>
 </head>
+
 <body>
 
     <div class="info-container">
-        
-        <div class="info-card">
-    <h2>Brasil</h2>
-    <ul>
-        <li><strong>Doença grave</strong> e potencialmente fatal se não tratada.</li>
-        <li>O Brasil registra cerca de <strong>3.000 a 3.500 casos por ano</strong>.</li>
-        <li>O país concentra <strong>mais de 90% dos casos das Américas</strong>.</li>
-        <li>A letalidade média é de aproximadamente <strong>8%</strong>.</li>
-        <li>A <strong>Região Nordeste</strong> é a mais afetada.</li>
-        <li>O principal reservatório doméstico são os <strong>cães</strong>.</li>
-        <li>Transmissão ocorre pela picada do <strong>mosquito-palha (Lutzomyia)</strong>.</li>
-    </ul>
-</div>
 
-<div class="info-card warning">
-    <h2>📍 Pernambuco</h2>
-    <ul>
-        <li>A doença é <strong>zoonótica</strong> no estado.</li>
-        <li>Entre 2023 e 2025, houve cerca de <strong>140 casos confirmados</strong>.</li>
-        <li>A média recente é de <strong>30 a 60 casos por ano</strong>.</li>
-        <li>As áreas mais atingidas são o <strong>Sertão</strong> e o <strong>Agreste</strong>.</li>
-        <li>Casos em <strong>cães</strong> são frequentes e aumentam o risco para humanos.</li>
-    </ul>
-</div>
+        <div class="info-card">
+            <h2>Brasil</h2>
+            <ul>
+                <li><strong>Doença grave</strong> e potencialmente fatal se não tratada.</li>
+                <li>O Brasil registra cerca de <strong>3.000 a 3.500 casos por ano</strong>.</li>
+                <li>O país concentra <strong>mais de 90% dos casos das Américas</strong>.</li>
+                <li>A letalidade média é de aproximadamente <strong>8%</strong>.</li>
+                <li>A <strong>Região Nordeste</strong> é a mais afetada.</li>
+                <li>O principal reservatório doméstico são os <strong>cães</strong>.</li>
+                <li>Transmissão ocorre pela picada do <strong>mosquito-palha (Lutzomyia)</strong>.</li>
+            </ul>
+        </div>
+
+        <div class="info-card warning">
+            <h2>📍 Pernambuco</h2>
+            <ul>
+                <li>A doença é <strong>zoonótica</strong> no estado.</li>
+                <li>Entre 2023 e 2025, houve cerca de <strong>140 casos confirmados</strong>.</li>
+                <li>A média recente é de <strong>30 a 60 casos por ano</strong>.</li>
+                <li>As áreas mais atingidas são o <strong>Sertão</strong> e o <strong>Agreste</strong>.</li>
+                <li>Casos em <strong>cães</strong> são frequentes e aumentam o risco para humanos.</li>
+            </ul>
+        </div>
 
         <div class="info-card warning">
             <h2>⚠️ Sintomas no Cão</h2>
@@ -158,7 +227,7 @@
             <ul>
                 <li>💉 <strong>Vacinação</strong> anual (disponível em clínicas)</li>
                 <li>🧪 <strong>Testes periódicos</strong> no veterinario</li>
-                <li>>Repelentes🧴 <strong</strong> e coleiras especiais</li>
+                <li>>Repelentes🧴 <strong< /strong> e coleiras especiais</li>
                 <li>🏡 <strong>Ambiente limpo</strong>: remover folhas e sujeira</li>
                 <li>🌙 <strong>Evitar passeios</strong> ao entardecer/amanhecer</li>
             </ul>
@@ -166,7 +235,8 @@
 
         <div class="info-card tip">
             <h2>💡 No Jogo</h2>
-            <p>No jogo, você coletou os <strong>Repelentes</strong> para se proteger. Na vida real, combine a prevenção química (coleiras, sprays) com a ambiental (limpeza) para maior eficácia!</p>
+            <p>No jogo, você coletou os <strong>Repelentes</strong> para se proteger. Na vida real, combine a prevenção
+                química (coleiras, sprays) com a ambiental (limpeza) para maior eficácia!</p>
         </div>
 
         <div class="info-card tip">
@@ -181,9 +251,124 @@
             </ul>
         </div>
 
+        <div class="info-card quiz-card">
+            <h2>🧠 Quiz Rápido</h2>
+
+            <div class="quiz-content">
+                <p id="question"></p>
+
+                <div id="answers" class="quiz-answers"></div>
+
+                <p id="feedback" class="quiz-feedback"></p>
+
+                <button id="nextBtn" class="quiz-next" style="display:none;">
+                    Próxima
+                </button>
+
+                <p id="result" class="quiz-result"></p>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">VOLTAR</a>
+
     </div>
 
-    <a href="index.html" class="back-btn">VOLTAR</a>
+    <script>
+        const quiz = [
+            {
+                question: "Quem transmite a Leishmaniose?",
+                answers: ["Mosquito comum", "Mosquito-palha (Lutzomyia)", "Carrapato"],
+                correct: 1
+            },
+            {
+                question: "Qual é o principal reservatório doméstico?",
+                answers: ["Gatos", "Cães", "Aves"],
+                correct: 1
+            },
+            {
+                question: "Qual região do Brasil é mais afetada?",
+                answers: ["Sul", "Nordeste", "Sudeste"],
+                correct: 1
+            },
+            {
+                question: "Entre 2023 e 2025, Pernambuco teve aproximadamente quantos casos?",
+                answers: ["20 casos", "140 casos", "500 casos"],
+                correct: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const questionEl = document.getElementById("question");
+        const answersEl = document.getElementById("answers");
+        const feedbackEl = document.getElementById("feedback");
+        const nextBtn = document.getElementById("nextBtn");
+        const resultEl = document.getElementById("result");
+
+        function loadQuestion() {
+            feedbackEl.textContent = "";
+            nextBtn.style.display = "none";
+
+            const q = quiz[currentQuestion];
+            questionEl.innerHTML = "<strong>" + q.question + "</strong>";
+            answersEl.innerHTML = "";
+
+            q.answers.forEach((answer, index) => {
+                const btn = document.createElement("button");
+                btn.textContent = answer;
+                btn.style.display = "block";
+                btn.style.margin = "8px 0";
+                btn.style.padding = "10px";
+                btn.style.width = "100%";
+                btn.style.borderRadius = "8px";
+                btn.style.border = "none";
+                btn.style.cursor = "pointer";
+                btn.style.background = "rgba(255,255,255,0.1)";
+                btn.style.color = "white";
+
+                btn.onclick = () => checkAnswer(index);
+
+                answersEl.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(index) {
+            const correct = quiz[currentQuestion].correct;
+
+            if (index === correct) {
+                feedbackEl.textContent = "✅ Correto!";
+                feedbackEl.style.color = "#2ecc71";
+                score++;
+            } else {
+                feedbackEl.textContent = "❌ Incorreto!";
+                feedbackEl.style.color = "#e74c3c";
+            }
+
+            nextBtn.style.display = "block";
+        }
+
+        nextBtn.onclick = () => {
+            currentQuestion++;
+            if (currentQuestion < quiz.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        };
+
+        function showResult() {
+            questionEl.innerHTML = "";
+            answersEl.innerHTML = "";
+            feedbackEl.textContent = "";
+            nextBtn.style.display = "none";
+
+            resultEl.innerHTML = "Você acertou <strong>" + score + "</strong> de <strong>" + quiz.length + "</strong> perguntas!";
+        }
+
+        loadQuestion();
+    </script>
 
 </body>
+
 </html
